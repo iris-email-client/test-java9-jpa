@@ -18,10 +18,9 @@ public class IrisFolder {
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
-	
+
 	@Column(name = "NAME", length = 512)
 	private String name;
-
 
 	public IrisFolder() {
 		this(null, "");
@@ -31,9 +30,9 @@ public class IrisFolder {
 		this(null, name);
 	}
 
-	public IrisFolder(String id, String name) {		
+	public IrisFolder(String id, String name) {
 		this.id = id;
-		this.name = name;		
+		this.name = name;
 	}
 
 	public String getId() {

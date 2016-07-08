@@ -23,10 +23,10 @@ public class Tag {
 	@Column(name = "TAG_ID")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	private String id;
-	
+
 	@Column
 	private String name;
-	
+
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "tags")
 	private Set<EmailMessage> messages;
 

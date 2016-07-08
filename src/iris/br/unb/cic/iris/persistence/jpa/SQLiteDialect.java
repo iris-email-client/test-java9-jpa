@@ -1,7 +1,6 @@
-package teste;
+package br.unb.cic.iris.persistence.jpa;
 
 import java.sql.Types;
-
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.function.AbstractAnsiTrimEmulationFunction;
 import org.hibernate.dialect.function.NoArgSQLFunction;
