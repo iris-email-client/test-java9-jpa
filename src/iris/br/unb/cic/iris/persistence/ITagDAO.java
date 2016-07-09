@@ -13,7 +13,7 @@ public interface ITagDAO {
 
 	public java.util.List<Tag> findAll() throws EmailException;
 
-	public void saveOrUpdate(Tag tag) throws EmailException;
+	public Tag saveOrUpdate(Tag tag) throws EmailException;
 
 	public void save(Tag tag, String messageId) throws EmailException;
 

@@ -10,7 +10,7 @@ import br.unb.cic.iris.model.EmailMessage;
  * added by dBasePersistence* modified by dTagBase
  */
 public interface IEmailDAO {
-	public void saveMessage(EmailMessage message) throws EmailException;
+	public EmailMessage saveMessage(EmailMessage message) throws EmailException;
 
 	public Date lastMessageReceived() throws EmailException;
 

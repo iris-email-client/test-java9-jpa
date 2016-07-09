@@ -15,23 +15,24 @@ import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
-import br.unb.cic.iris.MainApp;
-
 public abstract class AbstractDAO<T, I extends Serializable> {
-	private EntityManager entityManager;
+	static EntityManagerFactory entityManagerFactory;
+	protected EntityManager entityManager;
 	private Class<T> persistedClass;
 
-	protected AbstractDAO(Class<T> persistedClass) {
+	static {
 		Thread.currentThread().setContextClassLoader(new ClassLoader() {
 			public Enumeration<URL> getResources(String name) throws IOException {
 				if (name.equals("META-INF/persistence.xml")) {
-					return Collections
-							.enumeration(Arrays.asList(MainApp.class.getResource("/META-INF/persistence.xml")));
+					return Collections.enumeration(Arrays.asList(AbstractDAO.class.getResource("/META-INF/persistence.xml")));
 				}
 				return super.getResources(name);
 			}
 		});
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("IrisPU");
+		entityManagerFactory = Persistence.createEntityManagerFactory("IrisPU");
+	}
+	
+	protected AbstractDAO(Class<T> persistedClass) {
 		entityManager = entityManagerFactory.createEntityManager();
 		this.persistedClass = persistedClass;
 	}
@@ -69,8 +70,8 @@ public abstract class AbstractDAO<T, I extends Serializable> {
 		CriteriaQuery<T> query = builder.createQuery(persistedClass);
 		query.from(persistedClass);
 		return entityManager.createQuery(query).getResultList();
-	}
-
+	}		
+	
 	public T findById(I id) {
 		return entityManager.find(persistedClass, id);
 	}
