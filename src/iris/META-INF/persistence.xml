@@ -9,7 +9,7 @@
 		<class>br.unb.cic.iris.model.AddressBookEntry</class>
 		<class>br.unb.cic.iris.model.Tag</class>  -->
 		<properties>			
-			<property name="javax.persistence.jdbc.url" value="jdbc:sqlite:/home/pedro/tmp/teste.db" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:sqlite:${user.home}/iris-test.db" />
 			<property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
 			<property name="javax.persistence.jdbc.user" value="" />
 			<property name="javax.persistence.jdbc.password" value="" />

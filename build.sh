@@ -12,7 +12,6 @@ mkdir build
 rm -rf mlib
 mkdir mlib
 
-
 # download deps
 rm -rf libs
 mkdir libs
@@ -27,12 +26,10 @@ echo CLASSPATH=$CLASSPATH
 
 # compile
 echo Compiling ...
-$JAVA_BIN/javac -mp libs -d build -release 9 -modulesourcepath src $(find src -name "*.java")
+$JAVA_BIN/javac -mp libs -d build -modulesourcepath src $(find src -name "*.java")
 
 # module
 echo Creating Module: Iris
-#cp src/iris/*.properties build/iris
-#cp src/iris/*.xml build/iris
 cp -Rf src/iris/META-INF build/iris
 $JAVA_BIN/jar --create --file mlib/iris@1.0.jar --main-class br.unb.cic.iris.MainApp --module-version 1.0 -C build/iris .
 
